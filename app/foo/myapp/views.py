@@ -47,7 +47,7 @@ def delete_Buyer(request, Buyer_id):
         buyer_obj = Buyer.objects.get(pk=Buyer_id)
     except Buyer.DoesNotExist:
         return error_response(request, "Buyer not found")
-        buyer_obj.delete()
+    buyer_obj.delete()
     return success_response(request)
 
 @csrf_exempt
