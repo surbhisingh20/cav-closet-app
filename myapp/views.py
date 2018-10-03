@@ -16,9 +16,7 @@ def create_Buyer(request):
     if 'name' not in request.POST or 'phone_number' not in request.POST or 'email' not in request.POST:
         return error_response(request, "Error: missing required fields")
 
-    buyer_obj = Buyer(name=request.POST['name'],
-                     phone_number=request.POST['phone_number'],
-                     email=request.POST['email'])
+    buyer_obj = Buyer(name=request.POST['name'],phone_number=request.POST['phone_number'], email=request.POST['email'])
     try:
         buyer_obj.save()
     except db.Error:
@@ -36,6 +34,7 @@ def read_Buyer(request, Buyer_id):
         return error_response(request, "Buyer not found")
     return success_response(request, model_to_dict(buyer_obj))
 
+
 @csrf_exempt
 def delete_Buyer(request, Buyer_id):
     if request.method != 'DELETE':
@@ -46,6 +45,7 @@ def delete_Buyer(request, Buyer_id):
         return error_response(request, "Buyer not found")
     buyer_obj.delete()
     return success_response(request)
+
 
 @csrf_exempt
 def update_Buyer(request, Buyer_id):
@@ -68,7 +68,6 @@ def update_Buyer(request, Buyer_id):
         changed = True
     if not changed:
         return error_response(request, "No fields updated")
-
         buyer_obj.save()
     return success_response(request, model_to_dict(buyer_obj))
 
