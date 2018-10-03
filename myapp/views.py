@@ -1,6 +1,3 @@
-import datetime
-from django.contrib.auth import hashers
-from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 from django.forms.models import model_to_dict
 from django import db
